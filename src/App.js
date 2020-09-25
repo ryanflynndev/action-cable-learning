@@ -4,7 +4,9 @@ import CreateMessage from './Components/CreateMessage'
 // import RoomWebSocket from './Components/RoomWebSocket'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import MessageContainer from './Containers/MessageContainer'
+// import ActionCable from 'actioncable'
 
+// const WS_URL = 'ws://localhost:3000/cable'
 class App extends React.Component {
 
   state = {
@@ -22,6 +24,18 @@ class App extends React.Component {
     })
   }
 
+  // componentDidUpdate = () => {
+  //   const cable = ActionCable.createConsumer(WS_URL)
+
+  //   cable.subscriptions.create({
+  //     channel: 'ChatChannel'
+  //   }, {
+  //     received: response => this.createMessage(response)
+  //   })
+  // }
+    
+
+  
   createMessage = (message) => {
     fetch('http://localhost:3000/messages', {
       method: 'POST',
@@ -54,8 +68,9 @@ class App extends React.Component {
       <div>
         <CreateMessage submitHandler={this.createMessage}/>
         <ActionCableConsumer
-          channel={{ channel: 'ChatChannel' }}
-          onRecieved={this.handleReceived}>
+          channel={{ channel: 'MessagesChannel' }}
+          onReceived={this.handleReceived}
+          onDisconnected={() => console.log("disconnected")} >
           <h1>{this.getMessages}</h1>
           <MessageContainer messages={this.state.messages}/>
         </ActionCableConsumer>

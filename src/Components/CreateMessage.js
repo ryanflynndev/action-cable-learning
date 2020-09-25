@@ -14,7 +14,8 @@ class CreateMessage extends React.Component {
 
     submit = (e) => {
         e.preventDefault()
-        this.props.submitHandler({body: this.state.body})
+        this.props.submitHandler({ body: this.state.body })
+        this.setState({ body: '' })
     }
 
     render () {
@@ -22,7 +23,7 @@ class CreateMessage extends React.Component {
             <form onSubmit={this.submit}>
                 <label>Send a message:</label>
                 <input type="text" name="body" value={this.state.body} onChange={this.changeHandler}></input>
-                <button type="submit"/>
+                <button type="submit">Submit</button>
             </form>
         )
     }

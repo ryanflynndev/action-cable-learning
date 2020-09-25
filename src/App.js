@@ -11,11 +11,11 @@ class App extends React.Component {
     messages: []
   }
 
-  getMessages = () => {
+  componentDidMount = () => {
     fetch('http://localhost:3000/messages')
     .then(response => response.json())
     .then(messages => {
-      console.log(messages)
+      console.log("In Mount: ", messages)
       this.setState({
         messages: messages
       })
@@ -31,25 +31,34 @@ class App extends React.Component {
       },
       body: JSON.stringify(message)
     }).then(response => response.json())
-    .then(newMessage => {
+      .then(newMessage => {
+      console.log("In Fetch: ", newMessage)
       if(newMessage.id){
         let newArray = [newMessage, ...this.state.messages]
         this.setState({
           messages: newArray
         })
+
       }
 
     })
   }
 
-  render() {
+  handleReceived = (message) => {
+    console.log("HandleReceived: ", message)
+  }
 
+  render() {
+    console.log("In Render: ", this.state.messages)
     return (
       <div>
         <CreateMessage submitHandler={this.createMessage}/>
-        <ActionCableConsumer channel={{ channel: 'ChatChannel' }} onRecieved={this.getMessages}>
+        <ActionCableConsumer
+          channel={{ channel: 'ChatChannel' }}
+          onRecieved={this.handleReceived}>
+          <h1>{this.getMessages}</h1>
+          <MessageContainer messages={this.state.messages}/>
         </ActionCableConsumer>
-        <MessageContainer messages={this.state.messages}/>
       </div>
     );
   }

@@ -42,12 +42,16 @@ class App extends React.Component {
     })
   }
 
+  handleRecieved = (message) => {
+    console.log(message)
+  }
+
   render() {
 
     return (
       <div>
         <CreateMessage submitHandler={this.createMessage}/>
-        <ActionCableConsumer channel={{ channel: 'ChatChannel' }} onRecieved={this.getMessages}>
+        <ActionCableConsumer channel={{ channel: 'ChatChannel' }} onRecieved={this.handleRecieved}>
         </ActionCableConsumer>
         <MessageContainer messages={this.state.messages}/>
       </div>

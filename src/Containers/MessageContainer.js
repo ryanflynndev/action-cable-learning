@@ -11,6 +11,7 @@ class MessageContainer extends React.Component {
     }
 
     render () {
+
         return(
             this.renderMessages()
         )

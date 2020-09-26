@@ -1,11 +1,12 @@
 import React from 'react'
 
+
 class CreateMessage extends React.Component {
 
     state = {
-        body: ''
+      body: ''
     }
-
+    
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -14,18 +15,18 @@ class CreateMessage extends React.Component {
 
     submit = (e) => {
         e.preventDefault()
-        this.props.submitHandler({ body: this.state.body })
+        this.props.submitHandler({ body: this.state.body, chatroom_id: this.props.chatroomId })
         this.setState({ body: '' })
     }
 
-    render () {
-        return (
-            <form onSubmit={this.submit}>
-                <label>Send a message:</label>
-                <input type="text" name="body" value={this.state.body} onChange={this.changeHandler}></input>
-                <button type="submit">Submit</button>
-            </form>
-        )
+  render() {
+    return (
+      <form onSubmit={this.submit}>
+        <label>Send a message:</label>
+        <input type="text" name="body" value={this.state.body} onChange={this.changeHandler}></input>
+        <button type="submit">Submit</button>
+    </form>
+      )
     }
 }
 

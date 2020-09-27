@@ -5,6 +5,7 @@ import './App.css';
 import ChatroomContainer from './Containers/ChatroomContainer'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Login from './Components/Login'
+import ButtonAppBar from './Navbar/ButtonAppBar'
 
 // const WS_URL = 'ws://localhost:3000/cable'
 class App extends React.Component {
@@ -62,17 +63,20 @@ class App extends React.Component {
     })
       .then(resp => resp.json())
       .then(theUser => {
-        localStorage.setItem('token', theUser.jwt)
-        this.setState({
-          user: theUser
-        })
+        console.log(theUser)
+        if(theUser.message !== 'Invalid username or password') {
+          localStorage.setItem('token', theUser.jwt)
+          this.setState({
+            user: theUser
+          })
+        }
       })
   }
 
   render() {
     return (
       <>
-      <h1>Chatrooms</h1>
+      <ButtonAppBar />
       
         { this.state.user ?
           <ChatroomContainer user={this.state.user} />

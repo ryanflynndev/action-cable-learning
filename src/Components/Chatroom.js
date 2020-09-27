@@ -8,18 +8,31 @@ class Chatroom extends React.Component {
   state = {
     messages: []
   }
+
     componentDidMount(){
+      const token = localStorage.getItem('token')
+      fetch('http://localhost:3000/chatrooms', {
+        headers: {
+          Authorization: `Bearer ${token}`
+      }}) 
+      .then(response => response.json())
+      .then(chatrooms => {
+        let found = chatrooms.find(chatroom => chatroom.id === this.props.chatroom.id)
+        console.log(found)
         this.setState({
-            messages: this.props.chatroom.messages
+          messages: found.messages
         })
+      })
     }
   
   submitHandler = (messageObj) => {
+    const token = localStorage.getItem("token")
     fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        accepts: 'application/json'
+        accepts: 'application/json',
+        Authorization: `Bearer ${token}`
       },
         body: JSON.stringify(messageObj)
       })

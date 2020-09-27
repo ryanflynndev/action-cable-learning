@@ -7,6 +7,7 @@ import { ActionCableProvider } from 'react-actioncable-provider';
 
 
 
+
 ReactDOM.render(
   <ActionCableProvider url='ws://localhost:3000/cable'>
     <App />

@@ -16,7 +16,6 @@ class ChatroomContainer extends React.Component {
       headers: {
         Authorization: `Bearer ${token}`
     }})
-      
     .then(response => response.json())
     .then(chatrooms => {
       console.log("In Mount: ", chatrooms)
@@ -24,7 +23,17 @@ class ChatroomContainer extends React.Component {
         chatrooms: chatrooms
       })
     })
-  }
+    fetch('http://localhost:3000/api/v1/profile', {
+      method: 'GET',
+      headers: { Authorization: `Bearer ${token}`},
+      }).then(response => response.json())
+      .then(theUser => {
+        this.setState({
+          user: theUser
+        })
+      })
+    }
+  
   
   renderChatrooms = () => {
     if (this.state.user.user.chatrooms.length > 0) {

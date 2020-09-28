@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider';
-
+import {BrowserRouter} from 'react-router-dom'
 
 
 
 
 ReactDOM.render(
   <ActionCableProvider url='ws://localhost:3000/cable'>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ActionCableProvider>,
   document.getElementById('root')
 );

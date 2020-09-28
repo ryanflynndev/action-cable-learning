@@ -3,7 +3,7 @@ import './App.css';
 // import CreateMessage from './Components/CreateMessage'
 // import RoomWebSocket from './Components/RoomWebSocket'
 import ChatroomContainer from './Containers/ChatroomContainer'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Login from './Components/Login'
 import ButtonAppBar from './Navbar/ButtonAppBar'
 
@@ -76,10 +76,16 @@ class App extends React.Component {
   render() {
     return (
       <>
-      <ButtonAppBar />
       
         { this.state.user ?
-          <ChatroomContainer user={this.state.user} />
+          <>
+          <ButtonAppBar />
+            <Switch>
+              <Route path='/' render={() => <ChatroomContainer user={this.state.user}/>} />
+              <Route path='/chatrooms'></Route>
+            </Switch>
+          </>
+
           :
           <Login signupHandler={this.signupHandler} loginHandler={this.loginHandler} />}
      

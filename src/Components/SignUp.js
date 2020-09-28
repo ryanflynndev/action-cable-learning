@@ -15,9 +15,6 @@ class SignUp extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-
-  // doPasswordsMatch = () => {
-  //   this.state.password === this.state.password_confirm ?
       
   submitHandler = (e) => {
     console.log('are you in here')

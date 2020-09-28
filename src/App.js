@@ -3,8 +3,10 @@ import './App.css';
 // import CreateMessage from './Components/CreateMessage'
 // import RoomWebSocket from './Components/RoomWebSocket'
 import ChatroomContainer from './Containers/ChatroomContainer'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Login from './Components/Login'
+import ButtonAppBar from './Navbar/ButtonAppBar'
+import ChatroomIndex from './Containers/ChatroomIndex'
 
 // const WS_URL = 'ws://localhost:3000/cable'
 class App extends React.Component {
@@ -62,20 +64,29 @@ class App extends React.Component {
     })
       .then(resp => resp.json())
       .then(theUser => {
-        localStorage.setItem('token', theUser.jwt)
-        this.setState({
-          user: theUser
-        })
+        console.log(theUser)
+        if(theUser.message !== 'Invalid username or password') {
+          localStorage.setItem('token', theUser.jwt)
+          this.setState({
+            user: theUser
+          })
+        }
       })
   }
 
   render() {
     return (
       <>
-      <h1>Chatrooms</h1>
       
         { this.state.user ?
-          <ChatroomContainer user={this.state.user} />
+          <>
+          <ButtonAppBar />
+            <Switch>
+              <Route path='/' exact render={() => <ChatroomContainer user={this.state.user}/>} />
+              <Route path='/chatrooms' exact render={() => <ChatroomIndex user={this.state.user}/>}/>
+            </Switch>
+          </>
+
           :
           <Login signupHandler={this.signupHandler} loginHandler={this.loginHandler} />}
      

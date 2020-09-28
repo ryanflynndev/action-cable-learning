@@ -6,7 +6,8 @@ import CreateMessage from './CreateMessage'
 class Chatroom extends React.Component {
 
   state = {
-    messages: []
+    messages: [],
+    user: this.props.user
   }
 
     componentDidMount(){
@@ -18,7 +19,6 @@ class Chatroom extends React.Component {
       .then(response => response.json())
       .then(chatrooms => {
         let found = chatrooms.find(chatroom => chatroom.id === this.props.chatroom.id)
-        console.log(found)
         this.setState({
           messages: found.messages
         })
@@ -38,18 +38,20 @@ class Chatroom extends React.Component {
       })
       .then(response => response.json())
       .then(message => {
-        console.log('Post request is:', message)})
-      
+        console.log('Post request is:', message)}) 
   }
 
   handleReceived = (data) => {
-    console.log("In handle recieved: ", data)
+    console.log("this.state.messages: ", this.state.messages)
+    console.log("In handle recieved: ", data.message)
     let newArray = [...this.state.messages, data.message]
     console.log(newArray)
     this.setState({
       messages: newArray
     })
   }
+
+
 
 
   render() {
@@ -64,8 +66,7 @@ class Chatroom extends React.Component {
               <MessageContainer key={"ChatroomChannel"} messages={this.state.messages}/>
             </ActionCableConsumer>
             
-            <CreateMessage submitHandler={this.submitHandler} chatroomId={this.props.chatroom.id}/>
-            
+            <CreateMessage submitHandler={this.submitHandler} chatroomId={this.props.chatroom.id} user={this.state.user}/>
           </div>
       )
     }

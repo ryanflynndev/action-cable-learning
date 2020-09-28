@@ -5,7 +5,8 @@ import Chatroom from './Chatroom'
 class ChatroomList extends React.Component {
 
     state = {
-        clicked: false
+        clicked: false,
+        user: this.props.user
     }
 
     clickHandler = () => {
@@ -17,7 +18,7 @@ class ChatroomList extends React.Component {
 
     loadChatroom = () => {
         if (this.state.clicked) {
-            return <Chatroom key={this.props.chatroom.id} chatroom={this.props.chatroom}/>
+            return <Chatroom key={this.props.chatroom.id} chatroom={this.props.chatroom} user={this.props.user}/>
         } else {
             return null
         }

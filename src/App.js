@@ -6,6 +6,7 @@ import ChatroomContainer from './Containers/ChatroomContainer'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Login from './Components/Login'
 import ButtonAppBar from './Navbar/ButtonAppBar'
+import ChatroomIndex from './Containers/ChatroomIndex'
 
 // const WS_URL = 'ws://localhost:3000/cable'
 class App extends React.Component {
@@ -81,8 +82,8 @@ class App extends React.Component {
           <>
           <ButtonAppBar />
             <Switch>
-              <Route path='/' render={() => <ChatroomContainer user={this.state.user}/>} />
-              <Route path='/chatrooms'></Route>
+              <Route path='/' exact render={() => <ChatroomContainer user={this.state.user}/>} />
+              <Route path='/chatrooms' exact render={() => <ChatroomIndex user={this.state.user}/>}/>
             </Switch>
           </>
 

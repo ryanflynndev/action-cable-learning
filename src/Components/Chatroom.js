@@ -38,18 +38,20 @@ class Chatroom extends React.Component {
       })
       .then(response => response.json())
       .then(message => {
-        console.log('Post request is:', message)})
-      
+        console.log('Post request is:', message)}) 
   }
 
   handleReceived = (data) => {
-    console.log("In handle recieved: ", data)
+    console.log("this.state.messages: ", this.state.messages)
+    console.log("In handle recieved: ", data.message)
     let newArray = [...this.state.messages, data.message]
     console.log(newArray)
     this.setState({
       messages: newArray
     })
   }
+
+
 
 
   render() {
@@ -65,7 +67,6 @@ class Chatroom extends React.Component {
             </ActionCableConsumer>
             
             <CreateMessage submitHandler={this.submitHandler} chatroomId={this.props.chatroom.id} user={this.state.user}/>
-            
           </div>
       )
     }

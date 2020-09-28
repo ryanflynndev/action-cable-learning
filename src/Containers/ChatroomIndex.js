@@ -30,11 +30,11 @@ class ChatroomIndex extends React.Component {
     }
 
     filterUserChatrooms = () => {
-      let theUser = {username: this.props.user.user.username, avatar: this.props.user.user.avatar, id: this.props.user.user.id } 
+
 
         return this.state.chatrooms.filter(chat => { 
             return !chat.users.some(user => {
-              return user
+              return this.props.user.user.username === user.username
             })
         })
       

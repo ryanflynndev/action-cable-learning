@@ -5,15 +5,24 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ActionCableProvider } from 'react-actioncable-provider';
 import {BrowserRouter} from 'react-router-dom'
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-
+const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+})
 
 
 ReactDOM.render(
   <ActionCableProvider url='ws://localhost:3000/cable'>
+  <ThemeProvider theme={darkTheme}>
+    <CssBaseline/>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+  </ThemeProvider>
   </ActionCableProvider>,
   document.getElementById('root')
 );

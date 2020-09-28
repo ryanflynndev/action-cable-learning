@@ -17,11 +17,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  chatrooms: {
+    flex: 50
+  }
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
+  
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -29,9 +32,13 @@ export default function ButtonAppBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            facebook
+          <Typography variant="h6"  className={classes.title}>
+            ChatApp
           </Typography>
+          <Typography variant="h6" className={classes.chatrooms}>
+            Chatrooms
+          </Typography>
+
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

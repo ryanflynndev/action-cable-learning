@@ -4,6 +4,7 @@ import React from 'react'
 class CreateMessage extends React.Component {
 
     state = {
+      user: this.props.user,
       body: ''
     }
     
@@ -14,8 +15,9 @@ class CreateMessage extends React.Component {
     }
 
     submit = (e) => {
+      console.log(this.state.user)
         e.preventDefault()
-        this.props.submitHandler({ body: this.state.body, chatroom_id: this.props.chatroomId })
+        this.props.submitHandler({ body: this.state.body, chatroom_id: this.props.chatroomId, user_id: this.state.user.id })
         this.setState({ body: '' })
     }
 

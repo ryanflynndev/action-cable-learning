@@ -28,7 +28,7 @@ class ChatroomContainer extends React.Component {
   
   renderChatrooms = () => {
     if (this.state.user.user.chatrooms.length > 0) {
-      return this.state.user.user.chatrooms.map(chatroom => { return <ChatroomList key={chatroom.id} chatroom={chatroom} /> })
+      return this.state.user.user.chatrooms.map(chatroom => { return <ChatroomList key={chatroom.id} chatroom={chatroom} user={this.state.user.user} /> })
     }
   }
   

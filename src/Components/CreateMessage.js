@@ -1,12 +1,16 @@
 import React from 'react'
-
+import IconButton from '@material-ui/core/Button'
+import SendIcon from '@material-ui/icons/Send';
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core';
 
 class CreateMessage extends React.Component {
 
-    state = {
-      user: this.props.user,
-      body: ''
-    }
+  state = {
+    user: this.props.user,
+    body: ''
+  }
+  
     
     changeHandler = (e) => {
         this.setState({
@@ -24,9 +28,11 @@ class CreateMessage extends React.Component {
   render() {
     return (
       <form onSubmit={this.submit}>
-        <label>Send a message:</label>
-        <input type="text" name="body" value={this.state.body} onChange={this.changeHandler}></input>
-        <button type="submit">Submit</button>
+        <TextField label="Message" variant="outlined" type="text" name="body" value={this.state.body} onChange={this.changeHandler}></TextField>
+        {/* <button type="submit">Submit</button> */}
+        <IconButton type='submit' variant="contained" color="secondary">
+          <SendIcon /> Send Message
+        </IconButton>
     </form>
       )
     }

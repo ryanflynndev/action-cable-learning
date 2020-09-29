@@ -61,7 +61,6 @@ class Chatroom extends React.Component {
           <ActionCableConsumer
             channel={{ channel: 'ChatroomChannel', id: this.props.chatroom.id }}
             onReceived={this.handleReceived}
-            // onDisconnected={() => console.log("disconnected")}
           >
               <MessageContainer key={"ChatroomChannel"} messages={this.state.messages}/>
             </ActionCableConsumer>

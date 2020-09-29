@@ -1,5 +1,7 @@
 import React from 'react'
 import Chatroom from './Chatroom'
+import { Grid } from '@material-ui/core'
+import Paper from '@material-ui/core/Paper'
 
 
 class ChatroomList extends React.Component {
@@ -24,16 +26,26 @@ class ChatroomList extends React.Component {
         }
 
     }
+    
 
     render() {
         return (
-            <div>
+            <div style={joinchat}>
             <p onClick={this.clickHandler}>{this.props.chatroom.title}</p>
-            { this.loadChatroom()}
-            
+                    { this.loadChatroom()}
             </div>
         )
     }
 }
 
 export default ChatroomList
+
+const joinchat = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    // marginLeft: '2vw',
+    marginTop: '2vh',
+    border: '1px solid red',
+    borderRadius: '8px'
+  }

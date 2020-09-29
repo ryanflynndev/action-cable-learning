@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChatIcon from '@material-ui/icons/Chat';
 import { NavLink } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import { spacing } from '@material-ui/system'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,15 +23,17 @@ const useStyles = makeStyles((theme) => ({
   },
 
   chatrooms: {
+    flex: 1,
     display: 'grid',
       textTransform: 'none',
       fontSize: '1.25rem',
       font: 'Roboto',
     width: '150px',
+    margin: 'right'
   },
 
   login: {
-    // textAlign: 'right'
+    // spacing: 'mx.margin-right'
   }
   
 
@@ -60,7 +63,7 @@ export default function ButtonAppBar() {
           <Button variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
             Chatrooms
           </Button>
-          
+        
           <Button color="inherit" className={classes.login}>Login</Button>
         </Toolbar>
       </AppBar>

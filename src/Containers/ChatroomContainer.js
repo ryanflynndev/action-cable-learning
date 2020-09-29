@@ -2,6 +2,7 @@ import React from 'react'
 import ChatroomList from '../Components/ChatroomList'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Login from '../Components/Login'
+import { Grid } from '@material-ui/core'
 
 class ChatroomContainer extends React.Component {
 
@@ -46,7 +47,8 @@ class ChatroomContainer extends React.Component {
     
     return (
 
-    <div>
+      <div style={chatlist}>
+        <h1>Chatrooms</h1>
       {this.renderChatrooms()}
     </div>
     
@@ -56,3 +58,15 @@ class ChatroomContainer extends React.Component {
 }
 
 export default ChatroomContainer
+
+const chatlist = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  marginLeft: '2vw',
+  marginTop: '2vh',
+  border: '1px solid yellow',
+  borderRadius: '8px',
+  // float: 'left'
+  // width: '10vw'
+}

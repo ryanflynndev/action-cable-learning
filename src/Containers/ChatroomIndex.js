@@ -21,7 +21,9 @@ class ChatroomIndex extends React.Component {
             chatrooms: chatrooms
           })
         })
-      }
+    }
+
+
 
     renderAllChatrooms = () => {
         return this.filterUserChatrooms().map(chatroom => {
@@ -30,25 +32,24 @@ class ChatroomIndex extends React.Component {
     }
 
     filterUserChatrooms = () => {
-
-
         return this.state.chatrooms.filter(chat => { 
             return !chat.users.some(user => {
               return this.props.user.user.username === user.username
             })
         })
-      
     }
 
     render() {
         return (
-            <>
-            <h1>Chatrooms Index</h1>
+            
+            <div>
             {this.renderAllChatrooms()}
-            </>
+            <h1>hello</h1>
+            </div>
         )
     }
 
 }
 
 export default ChatroomIndex
+

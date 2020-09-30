@@ -1,6 +1,7 @@
 import React from 'react'
 import JoinChatroom from '../Components/JoinChatroom'
 
+
 class ChatroomIndex extends React.Component {
 
     state = {
@@ -41,11 +42,11 @@ class ChatroomIndex extends React.Component {
 
     render() {
         return (
-            
+
             <div>
             {this.renderAllChatrooms()}
-            <h1>hello</h1>
-            </div>
+            </ div>
+
         )
     }
 

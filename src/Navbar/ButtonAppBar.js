@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   chatrooms: {
-    flex: 1,
-    display: 'grid',
-      textTransform: 'none',
-      fontSize: '1.25rem',
-      font: 'Roboto',
+    // flex: 1,
+    
+    textTransform: 'none',
+    fontSize: '1.25rem',
+    font: 'Roboto',
     width: '150px',
     margin: 'right'
   },
@@ -35,15 +35,14 @@ const useStyles = makeStyles((theme) => ({
   login: {
     // spacing: 'mx.margin-right'
   }
-  
-
-
 }));
 
-function chatroomClickHandler(e) {
-  console.log('CHATROOM CLICKED')
+function chatroomClickHandler() {
   window.location.href='/chatrooms'
+}
 
+const chatHomeClickHandler = () => {
+  window.location.href='/'
 }
 
 export default function ButtonAppBar() {
@@ -54,17 +53,14 @@ export default function ButtonAppBar() {
       <AppBar position="static" >
         <Toolbar>
           <IconButton edge="start" className={classes.ChatIcon} color="inherit" aria-label="menu">
-            <ChatIcon />
+            <ChatIcon onClick={chatHomeClickHandler}/>
           </IconButton>
           <Typography variant="h6"  className={classes.title}>
-            ChatApp
+            
           </Typography>
-          
-          <Button variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
+          <Button edge="start" variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
             Chatrooms
           </Button>
-        
-          <Button color="inherit" className={classes.login}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

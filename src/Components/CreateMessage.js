@@ -27,11 +27,21 @@ class CreateMessage extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submit}>
-        <TextField label="Message" variant="outlined" type="text" name="body" value={this.state.body} onChange={this.changeHandler}></TextField>
+      <form style={form} onSubmit={this.submit}>
+        <TextField
+          style={messageInput}
+          label="Write a Message..."
+          multiline
+          size='small'
+          rowsMax={4}
+          variant="outlined"
+          type="text"
+          name="body"
+          value={this.state.body}
+          onChange={this.changeHandler}></TextField>
         {/* <button type="submit">Submit</button> */}
-        <IconButton type='submit' variant="contained" color="secondary">
-          <SendIcon /> Send Message
+        <IconButton size='large' type='submit'  color="primary">
+          <SendIcon />Send
         </IconButton>
     </form>
       )
@@ -39,3 +49,13 @@ class CreateMessage extends React.Component {
 }
 
 export default CreateMessage
+
+const messageInput = {
+  width: '48vw',
+  marginRight: '1.5vw'
+}
+
+const form = {
+  alignItems: 'baseline',
+
+}

@@ -39,6 +39,7 @@ class JoinChatroom extends React.Component {
   render() {
     return (
       <>
+      <label>{this.props.chatroom.title} Users:{this.props.chatroom.users.length}</label>
       <button onClick={this.clickHandler} >Join {this.props.chatroom.title}</button>
       { this.state.clicked ? <Redirect to="/" /> : null}
       </>

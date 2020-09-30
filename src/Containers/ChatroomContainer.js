@@ -47,7 +47,7 @@ class ChatroomContainer extends React.Component {
     
     return (
 
-      <div style={chatlist}>
+      <div className="chatroomContainer" style={chatlist}>
         <h1>Chatrooms</h1>
       {this.renderChatrooms()}
     </div>
@@ -67,6 +67,5 @@ const chatlist = {
   marginTop: '2vh',
   border: '1px solid yellow',
   borderRadius: '8px',
-  // float: 'left'
-  // width: '10vw'
+
 }

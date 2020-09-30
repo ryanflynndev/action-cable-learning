@@ -44,7 +44,7 @@ class Login extends React.Component {
               <label>Username: </label>
               <input name="username" value={this.state.username} onChange={this.changeHandler}/><br></br>
               <label>Password: </label>
-              <input name="password" value={this.state.password} onChange={this.changeHandler}/><br/>
+              <input type='password' name="password" value={this.state.password} onChange={this.changeHandler}/><br/>
               <button type="submit">Log In</button>
             </form>
             <button onClick={this.clickHandler}>New User? Sign Up</button>

@@ -57,5 +57,6 @@ const messageInput = {
 
 const form = {
   alignItems: 'baseline',
+  marginBottom: '3vh'
 
 }

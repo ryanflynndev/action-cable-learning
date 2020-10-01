@@ -1,16 +1,18 @@
 import React from 'react'
 import Chatroom from './Chatroom'
-import { Grid } from '@material-ui/core'
+import { Accordion, AccordionSummary, Typography, AccordionDetails, Avatar } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import IconButton from '@material-ui/core/Button'
 import { color } from '@material-ui/system';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Image from 'material-ui-image'
 
 class ChatroomList extends React.Component {
 
     state = {
         clicked: false,
-        user: this.props.user
+        user: this.props.user,
     }
 
     clickHandler = () => {
@@ -29,7 +31,7 @@ class ChatroomList extends React.Component {
 
     }
 
-    submitHandler = (e) => {
+    submitHandler = () => {
         let membership = this.props.user.memberships.find(membership => {return membership.chatroom_id === this.props.chatroom.id})
         console.log(membership.id)
         console.log(membership)
@@ -39,13 +41,31 @@ class ChatroomList extends React.Component {
 
     render() {
         return (
-            <div className='chatroomList' style={joinchat}>
-            <p onClick={this.clickHandler}>{this.props.chatroom.title}</p>
-            <IconButton  variant="contained" style={leaveBtn} color="#f50057" onClick={this.submitHandler}>
+            <Accordion style={accMain} >
+                <AccordionSummary
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    onClick={this.clickHandler}
+                >
+                    <Typography style={heading} variant='h5'>{this.props.chatroom.title}</Typography>
+                    <Avatar style={avatar} alt={this.props.chatroom.img_url} src={this.props.chatroom.img_url} />
+                </AccordionSummary>
+                    <AccordionDetails>
+                    <Typography style={subHeading} variant='p'>{this.props.chatroom.description}</Typography>
+                    { this.loadChatroom()}
+                    </AccordionDetails>
+                    <IconButton  variant="contained" style={leaveBtn} color="#f50057" onClick={this.submitHandler}>
                 <ExitToAppIcon /> Leave Room
             </IconButton>
-                    { this.loadChatroom()}
+                        
+                        
+
+            <div className='chatroomList' style={joinchat}>
+            <p ></p>
+            
             </div>
+                
+            </Accordion>
         )
     }
 }
@@ -55,13 +75,41 @@ export default ChatroomList
 const joinchat = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    // marginLeft: '2vw',
     marginTop: '2vh',
-    // border: '1px solid red',
     borderRadius: '8px'
 }
   
 const leaveBtn = {
     backgroundColor: '#e53935',
-    color: 'white'
+    color: 'white',
+    float: 'right',
+    marginBottom: '2vh',
+    marginRight: '2vw',
+    width: '15vw'
+}
+
+const chatImg = {
+    display: 'flex',
+    height: '20px',
+    width: 'auto'
+}
+
+const heading = {
+    fontSize: 'theme.typography.pxToRem(15)',
+    flexShrink: 0,
+}
+  
+const subHeading = {
+    fontSize: 'theme.typography.pxToRem(15)',
+    alignContent: 'center'
+}
+
+const accMain = {
+    marginRight: '5vw',
+    marginLeft: '5vw',
+    marginBottom: '.5vh',
+}
+
+const avatar = {
+    marginLeft: '1vw'
 }

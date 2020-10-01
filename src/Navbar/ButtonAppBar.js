@@ -8,57 +8,51 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChatIcon from '@material-ui/icons/Chat';
 import { NavLink } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { spacing } from '@material-ui/system'
 import Box from '@material-ui/core/Box'
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    // flexGrow: 1,
+  rightSide: {
+    display: 'flex',
+
+
+      menuButton: {
+        marginRight: theme.spacing(2),
+      },
+      title: {
+        // flexGrow: 1,
+      },
+
+      chatrooms: {
+        // flex: 1,
+      
+        textTransform: 'none',
+        fontSize: '1.25rem',
+        font: 'Roboto',
+        width: '150px',
+        margin: 'right'
+      },
+
+      login: {
+        // spacing: 'mx.margin-right'
+      }
   },
 
-  chatrooms: {
-    // flex: 1,
-    
-    textTransform: 'none',
-    fontSize: '1.25rem',
-    font: 'Roboto',
-    width: '150px',
-    margin: 'right'
-  },
+  leftSide: {
 
-  login: {
-    // spacing: 'mx.margin-right'
+
+
+
   }
-  
 }));
 
-function chatroomClickHandler() {
-  window.location.href='/chatrooms'
-}
 
-function createChatroomClickHandler() {
-  window.location.href='/create-chatroom'
-}
-
-const chatHomeClickHandler = () => {
-  window.location.href='/'
-}
-
-const signOutClickHandler = () => {
-  localStorage.removeItem('token')
-  window.location.href='/'
-}
 
 const StyledBadge = withStyles((theme) => ({
+  
   badge: {
     backgroundColor: '#44b700',
     color: '#44b700',
@@ -89,40 +83,83 @@ const StyledBadge = withStyles((theme) => ({
 
 export default function ButtonAppBar(props) {
   const classes = useStyles();
+
+
+
+    let history = useHistory();
+  
+  
+    function chatroomClickHandler() {
+      history.push('/chatrooms')
+    }
+  
+    function createChatroomClickHandler() {
+      history.push('/create-chatroom')
+    }
+  
+    const chatHomeClickHandler = () => {
+      history.push('/')
+    }
+  
+    const signOutClickHandler = () => {
+      localStorage.removeItem('token')
+      history.push('/')
+    }
+  
   
   return (
-    <div className={classes.root}>
-      <AppBar position="static" >
+      <div >
+        <AppBar position="static"  >
         <Toolbar>
-          <IconButton edge="start" className={classes.ChatIcon} color="inherit" aria-label="menu">
-            <ChatIcon onClick={chatHomeClickHandler}/>
-          </IconButton>
-          <Typography variant="h6"  className={classes.title}>
-            ChatBox
+
+          <IconButton edge="start" style={leftSide} className={classes.ChatIcon} color="inherit" aria-label="menu">
+              <ChatIcon onClick={chatHomeClickHandler} />
+            </IconButton>
+          <Typography style={leftSide} variant="h6" className={classes.title}>
+              ChatBox
           </Typography>
-          <Button edge="start" variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
-            Chatrooms
+            <Button style={leftSide} edge="start" variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
+              Chatrooms
           </Button>
-          <Button edge="start" variant="h6" className={classes.chatrooms} onClick={createChatroomClickHandler}>
-            Create 
+            <Button style={leftSide} edge="start" variant="h6" className={classes.chatrooms} onClick={createChatroomClickHandler}>
+            Create
           </Button>
-          <Box justifyContent="flex-end">
-          <StyledBadge
-            overlap="circle"
-            anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
-            }}
-            variant="dot"
-          >
-            <Avatar alt={props.user.user.username} src={props.user.user.avatar} />
-          </StyledBadge>
-          <Button  variant="h6" className={classes.chatrooms} onClick={signOutClickHandler}>
-            Sign Out
+   
+            <div style={blank} />
+            <Box style={rightSide}>
+              <StyledBadge
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                variant="dot"
+              >
+                <Avatar alt={props.user.user.username} src={props.user.user.avatar} />
+              </StyledBadge>
+              <Button style={rightSide} variant="h6" className={classes.chatrooms} onClick={signOutClickHandler}>
+                Sign Out
           </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+            </Box>
+
+          </Toolbar>
+        </AppBar>
+      
+      </div>
+    );
+  }
+
+
+const rightSide = {
+  display: 'flex',
+ justifyContent: 'flex-start'
+}
+
+const leftSide = {
+  display: 'flex',
+  justifyContent: 'flex-end'
+}
+
+const blank = {
+  flexGrow: 1
 }

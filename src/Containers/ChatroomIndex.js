@@ -1,6 +1,7 @@
 import React from 'react'
 import JoinChatroom from '../Components/JoinChatroom'
 
+
 class ChatroomIndex extends React.Component {
 
     state = {
@@ -21,7 +22,9 @@ class ChatroomIndex extends React.Component {
             chatrooms: chatrooms
           })
         })
-      }
+    }
+
+
 
     renderAllChatrooms = () => {
         return this.filterUserChatrooms().map(chatroom => {
@@ -30,25 +33,30 @@ class ChatroomIndex extends React.Component {
     }
 
     filterUserChatrooms = () => {
-
-
         return this.state.chatrooms.filter(chat => { 
             return !chat.users.some(user => {
               return this.props.user.user.username === user.username
             })
         })
-      
     }
 
     render() {
         return (
-            <>
-            <h1>Chatrooms Index</h1>
+
+            <div style={chatList}>
             {this.renderAllChatrooms()}
-            </>
+            </div>
+
         )
     }
 
 }
 
 export default ChatroomIndex
+
+const chatList = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+}

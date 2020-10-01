@@ -7,14 +7,20 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Login from './Components/Login'
 import ButtonAppBar from './Navbar/ButtonAppBar'
 import ChatroomIndex from './Containers/ChatroomIndex'
+import { Grid } from '@material-ui/core'
+import CreateChatroom from './Components/CreateChatroom'
 
 // const WS_URL = 'ws://localhost:3000/cable'
 class App extends React.Component {
-
+  
   state = {
     user: null
   }
+  
 
+
+  
+    
   componentDidMount(){
     const token = localStorage.getItem('token')
     if(token){
@@ -28,12 +34,13 @@ class App extends React.Component {
         })
       })
     } else {
-        this.setState({
-          user: null
-        })
+      this.setState({
+        user: null
+      })
     }
   }
-
+  
+  
   signupHandler = (newUser) => {
     console.log("is it going in here")
     fetch('http://localhost:3000/api/v1/users', {
@@ -77,23 +84,25 @@ class App extends React.Component {
   render() {
     return (
       <>
-      
         { this.state.user ?
           <>
+          
+
           <ButtonAppBar />
             <Switch>
-              <Route path='/' exact render={() => <ChatroomContainer user={this.state.user}/>} />
-              <Route path='/chatrooms' exact render={() => <ChatroomIndex user={this.state.user}/>}/>
+                <Route path='/' exact render={() => <ChatroomContainer user={this.state.user}/>}/>
+                <Route path='/chatrooms' exact render={() => <ChatroomIndex user={this.state.user}/>}/>
+                <Route path='/create-chatroom' exact render={() => <CreateChatroom user={this.state.user}/>}/>
             </Switch>
           </>
-
           :
           <Login signupHandler={this.signupHandler} loginHandler={this.loginHandler} />}
-     
-</>
-    );
+      </>
+    );  
   }
 
 }
+
+
 
 export default App;

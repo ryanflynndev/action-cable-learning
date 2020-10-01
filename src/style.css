@@ -1,0 +1,15 @@
+#chatroom {
+  justify-content: flex-start;
+  border: 1px solid blue;
+  border-radius: 8px;
+  float: right;
+  width: 60vw;
+  height: 60vh;
+  /* align-items: right; */
+  text-align: right;
+}
+
+/* .chatroomList {
+  float: left;
+  width: 20vw
+} */

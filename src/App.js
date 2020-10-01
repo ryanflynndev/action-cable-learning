@@ -88,7 +88,7 @@ class App extends React.Component {
           <>
           
 
-          <ButtonAppBar />
+          <ButtonAppBar user={this.state.user} />
             <Switch>
                 <Route path='/' exact render={() => <ChatroomContainer user={this.state.user}/>}/>
                 <Route path='/chatrooms' exact render={() => <ChatroomIndex user={this.state.user}/>}/>

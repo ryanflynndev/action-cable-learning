@@ -43,9 +43,9 @@ class ChatroomIndex extends React.Component {
     render() {
         return (
 
-            <div>
+            <div style={chatList}>
             {this.renderAllChatrooms()}
-            </ div>
+            </div>
 
         )
     }
@@ -54,3 +54,9 @@ class ChatroomIndex extends React.Component {
 
 export default ChatroomIndex
 
+const chatList = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+}

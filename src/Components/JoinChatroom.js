@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core'
 
 class JoinChatroom extends React.Component {
 
@@ -32,20 +33,50 @@ class JoinChatroom extends React.Component {
     }) 
   }
 
-  
-  
-
-
   render() {
+    console.log("joinchat: ", this.props.chatroom.img_url)
     return (
-      <>
-      <label>{this.props.chatroom.title} Users:{this.props.chatroom.users.length}</label>
-      <button onClick={this.clickHandler} >Join {this.props.chatroom.title}</button>
-      { this.state.clicked ? <Redirect to="/" /> : null}
-      </>
+      <Card style={chatName} onClick={this.clickHandler} >{ this.state.clicked ? <Redirect to="/" /> : null}
+        <CardActionArea>
+          <CardMedia 
+          style={chatImage}
+          image={this.props.chatroom.img_url}
+          title={this.props.chatroom.title}
+          />
+        <CardContent>
+          <Typography
+            variant="h5"
+            component="h2">
+          {this.props.chatroom.title}
+          </Typography>
+            <Typography variant="body" component="p">
+              {this.props.chatroom.description}
+            </Typography>
+            <br />
+            <Typography variant="body2" compoinent='p'>
+      Users:{this.props.chatroom.users.length}
+            </Typography>
+
+      
+
+        </CardContent>
+        </CardActionArea>
+      </Card>
     ) 
   }
 }
 
 export default JoinChatroom
 
+const chatName = {
+  display: 'flex',
+  margin: '10px',
+  width: '28vw',
+  justifyContent: 'center'
+}
+
+const chatImage = {
+  height: 0,
+  paddingTop: '56.25%',
+  marginTop:'30'
+}

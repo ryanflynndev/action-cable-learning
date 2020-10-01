@@ -6,6 +6,8 @@ class CreateChatroom extends React.Component {
 
     state = {
         title: '',
+        image: '',
+        description: '',
         submitted: false
     }
 
@@ -21,7 +23,9 @@ class CreateChatroom extends React.Component {
                 Authorization: `Bearer ${token}`
             },
             body: JSON.stringify({
-                title: this.state.title
+                title: this.state.title,
+                img_url: this.state.img_url,
+                description: this.state.description
             })
         }).then(response => response.json())
         .then(newChatroom => {
@@ -61,6 +65,8 @@ class CreateChatroom extends React.Component {
             <form onSubmit={this.submitHandler}>
                 <label>Title</label>
                 <input type="text" name="title" onChange={this.changeHandler} value={this.state.title}/>
+                <input type="text" name="image" onChange={this.changeHandler} value={this.state.image}/>
+                <input type="text" name="description" onChange={this.changeHandler} value={this.state.description}/>
                 <button type="submit">Submit</button>
             </form>
             { this.state.submitted ? <Redirect to="/" /> : null}

@@ -2,7 +2,7 @@ import React from 'react'
 import ChatroomList from '../Components/ChatroomList'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Login from '../Components/Login'
-import { Grid } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 
 class ChatroomContainer extends React.Component {
 
@@ -35,10 +35,24 @@ class ChatroomContainer extends React.Component {
       })
     }
   
+  deleteMembership = (membershipObj) => {
+    const token = localStorage.getItem('token');
+    fetch(`http://localhost:3000/memberships/${membershipObj.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        accepts: 'application/json'
+      },
+    })
+    .then(() => {
+      this.componentDidMount()
+    })
+  }
   
   renderChatrooms = () => {
     if (this.state.user.user.chatrooms.length > 0) {
-      return this.state.user.user.chatrooms.map(chatroom => { return <ChatroomList key={chatroom.id} chatroom={chatroom} user={this.state.user.user} /> })
+      return this.state.user.user.chatrooms.map(chatroom => { return <ChatroomList key={chatroom.id} chatroom={chatroom} user={this.state.user.user} deleteMembership={this.deleteMembership} /> })
     }
   }
   
@@ -48,7 +62,7 @@ class ChatroomContainer extends React.Component {
     return (
 
       <div className="chatroomContainer" style={chatlist}>
-        <h1>Chatrooms</h1>
+        <Typography variant="h4">List of Chatrooms</Typography>
       {this.renderChatrooms()}
     </div>
     
@@ -65,7 +79,7 @@ const chatlist = {
   justifyContent: 'flex-start',
   marginLeft: '2vw',
   marginTop: '2vh',
-  border: '1px solid yellow',
+  // border: '1px solid yellow',
   borderRadius: '8px',
 
 }

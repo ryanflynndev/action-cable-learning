@@ -30,7 +30,10 @@ class ChatroomList extends React.Component {
     }
 
     submitHandler = (e) => {
-        e.preventDefault()
+        let membership = this.props.user.memberships.find(membership => {return membership.chatroom_id === this.props.chatroom.id})
+        console.log(membership.id)
+        console.log(membership)
+        this.props.deleteMembership(membership)
     }
     
 
@@ -38,7 +41,7 @@ class ChatroomList extends React.Component {
         return (
             <div className='chatroomList' style={joinchat}>
             <p onClick={this.clickHandler}>{this.props.chatroom.title}</p>
-            <IconButton type='submit' variant="contained" style={leaveBtn} color="#f50057" onSubmit={this.submitHandler}>
+            <IconButton  variant="contained" style={leaveBtn} color="#f50057" onClick={this.submitHandler}>
                 <ExitToAppIcon /> Leave Room
             </IconButton>
                     { this.loadChatroom()}
@@ -54,7 +57,7 @@ const joinchat = {
     justifyContent: 'flex-start',
     // marginLeft: '2vw',
     marginTop: '2vh',
-    border: '1px solid red',
+    // border: '1px solid red',
     borderRadius: '8px'
 }
   

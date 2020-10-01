@@ -41,7 +41,16 @@ function chatroomClickHandler() {
   window.location.href='/chatrooms'
 }
 
+function createChatroomClickHandler() {
+  window.location.href='/create-chatroom'
+}
+
 const chatHomeClickHandler = () => {
+  window.location.href='/'
+}
+
+const signOutClickHandler = () => {
+  localStorage.removeItem('token')
   window.location.href='/'
 }
 
@@ -56,10 +65,16 @@ export default function ButtonAppBar() {
             <ChatIcon onClick={chatHomeClickHandler}/>
           </IconButton>
           <Typography variant="h6"  className={classes.title}>
-            
+            I Hate CSS
           </Typography>
           <Button edge="start" variant="h6" className={classes.chatrooms} onClick={chatroomClickHandler}>
             Chatrooms
+          </Button>
+          <Button edge="start" variant="h6" className={classes.chatrooms} onClick={createChatroomClickHandler}>
+            Create 
+          </Button>
+          <Button edge="start" variant="h6" className={classes.chatrooms} onClick={signOutClickHandler}>
+            Sign Out
           </Button>
         </Toolbar>
       </AppBar>

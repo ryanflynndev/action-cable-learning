@@ -45,7 +45,8 @@ class SignUp extends React.Component {
           <TextField fullWidth='true' required='true' size="small" style={inputs} label="User Avatar URL" name="avatar" variant="outlined" value={this.state.avatar} onChange={this.changeHandler} /><br/>
         <TextField fullWidth='true' required='true' size="small" style={inputs} label="Username" variant="outlined"name="username" value={this.state.username} onChange={this.changeHandler}/><br></br>
         <TextField fullWidth='true' required='true' size="small" style={inputs} label="Password" variant="outlined"name="password" type="password" value={this.state.password} onChange={this.changeHandler}/><br/>
-        <TextField fullWidth='true' required='true' size="small" style={inputs} label="Confirm Password" variant="outlined"name="password_confirm" type="password" value={this.state.password_confirm} onChange={this.changeHandler}/><br></br>
+        <TextField fullWidth='true' required='true' size="small" style={inputs} label="Confirm Password" variant="outlined"name="password_confirm" type="password" value={this.state.password_confirm} onChange={this.changeHandler}/>
+        <br></br>
           <Button style={submitBtn} color='primary' variant="contained" type="submit">Sign Up</Button>
       </form>
           </CardContent>
@@ -76,15 +77,14 @@ const formForm = {
   // margin: '10rem'
 }
 
-const formCont = {
-  margin: '10rem'
-}
+
 
 const submitBtn = {
-  // marginTop: "1vh",
+  marginTop: "1vh",
   float: "right",
   // marginRight: '2vw',
-  width: '15vw'
+  width: '15vw',
+  marginBottom: '5vh'
 }
 
 const title = {

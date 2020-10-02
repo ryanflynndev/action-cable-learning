@@ -2,9 +2,6 @@ import React from 'react'
 import MessageContainer from '../Containers/MessageContainer'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import CreateMessage from './CreateMessage'
-import { Grid } from '@material-ui/core'
-import { borderRadius, borderRight } from '@material-ui/system'
-import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper';
 
 class Chatroom extends React.Component {

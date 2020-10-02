@@ -1,12 +1,8 @@
 import React from 'react'
 import Chatroom from './Chatroom'
 import { Accordion, AccordionSummary, Typography, AccordionDetails, Avatar } from '@material-ui/core'
-import Paper from '@material-ui/core/Paper'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import IconButton from '@material-ui/core/Button'
-import { color } from '@material-ui/system';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Image from 'material-ui-image'
 
 class ChatroomList extends React.Component {
 

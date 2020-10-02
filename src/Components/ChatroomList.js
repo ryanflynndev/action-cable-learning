@@ -96,8 +96,9 @@ const heading = {
 }
   
 const subHeading = {
-    fontSize: 'theme.typography.pxToRem(15)',
-    alignContent: 'center'
+    // fontSize: 'theme.typography.pxToRem(15)',
+    alignContent: 'left',
+    width: '20vw'
 }
 
 const accMain = {

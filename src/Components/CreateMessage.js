@@ -55,8 +55,9 @@ class CreateMessage extends React.Component {
 export default CreateMessage
 
 const messageInput = {
-  width: '48vw',
-  marginRight: '1.5vw'
+  width: '46vw',
+  marginRight: '1.5vw',
+  marginTop: '.25vh'
 }
 
 const form = {

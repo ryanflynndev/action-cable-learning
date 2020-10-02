@@ -54,8 +54,8 @@ class ChatroomList extends React.Component {
                     <Typography style={subHeading} variant='p'>{this.props.chatroom.description}</Typography>
                     { this.loadChatroom()}
                     </AccordionDetails>
-                    <IconButton  variant="contained" style={leaveBtn} color="#f50057" onClick={this.submitHandler}>
-                <ExitToAppIcon /> Leave Room
+                    <IconButton  variant="contained" style={leaveBtn} color="#f50057" onClick={this.submitHandler} startIcon={<ExitToAppIcon />}>
+                 Leave Room
             </IconButton>
                         
                         

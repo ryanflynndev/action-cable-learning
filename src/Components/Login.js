@@ -33,45 +33,83 @@ class Login extends React.Component {
 
   render() {
     return (
-      
-      <div style={form}>
-        <Card elevation={12}>
+			<div style={form}>
+				<Card elevation={12}>
+					<Paper>
+						{this.state.clicked ? (
+							<SignUp signupHandler={this.props.signupHandler} />
+						) : (
+							<CardContent>
+								<Typography
+									style={title}
+									gutterBottom
+									color="secondary"
+									align="center"
+									variant="h2"
+									component="h2"
+								>
+									ChatBox
+								</Typography>
 
-        <Paper >
+								<div style={childForm}>
+									<CardActionArea>
+										<CardMedia
+											style={loginImg}
+											image="https://i.ibb.co/PGSxdbf/Untitled-design-1.png"
+											title="Chits"
+										/>
+									</CardActionArea>
 
-          {this.state.clicked ?
-          <SignUp signupHandler={this.props.signupHandler}/> 
-          :
-          <CardContent>
-                <Typography  style={title} gutterBottom color='secondary' align="center" variant="h2" component="h2">ChatBox</Typography>
-                
-                <div style={childForm}>
-                  <CardActionArea>
-                  <CardMedia
-                    style={loginImg}
-                    image='https://i.ibb.co/PGSxdbf/Untitled-design-1.png'
-                    title="Chits"
-                    />
-                    </CardActionArea>
+									<form style={formForm} onSubmit={this.submitHandler}>
+										<TextField
+											fullWidth="true"
+											label="Username"
+											required="true"
+											size="small"
+											variant="outlined"
+											name="username"
+											value={this.state.username}
+											onChange={this.changeHandler}
+										/>
+										<br></br>
+										<br></br>
 
-                  
-              <form style={formForm} onSubmit={this.submitHandler}>
-              <TextField fullWidth='true' label="Username" required='true' size='small' variant="outlined" name="username" value={this.state.username} onChange={this.changeHandler}/>
-              <br></br>
-              <br></br>
-              
-                <TextField fullWidth='true' label="Password" variant="outlined" type='password' name="password" value={this.state.password} required='true' size='small' onChange={this.changeHandler}/><br/>
-                <Button style={submitBtn} color='primary'  variant='contained' type="submit">Log In</Button>
-                  </form>
-                  <Button style={signUp} label="Sign up" color='secondary'  onClick={this.clickHandler}>New User? Sign Up</Button>
-        </div> 
-          </CardContent>
-      }
-      </Paper>
-      </Card>
-      
-      </div>
-    )
+										<TextField
+											fullWidth="true"
+											label="Password"
+											variant="outlined"
+											type="password"
+											name="password"
+											value={this.state.password}
+											required="true"
+											size="small"
+											onChange={this.changeHandler}
+										/>
+										<br />
+										<Button
+											style={submitBtn}
+											color="primary"
+											variant="contained"
+											type="submit"
+										>
+											Log In
+										</Button>
+									</form>
+									<Button
+										style={signUp}
+										label="Sign up"
+										color="secondary"
+										onClick={this.clickHandler}
+									>
+										New User? Sign Up
+									</Button>
+								</div>
+							</CardContent>
+						)}
+					</Paper>
+				</Card>
+			</div>
+		);
   }
 }
 

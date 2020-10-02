@@ -95,7 +95,8 @@ export default function ButtonAppBar(props) {
 	}
 
 	const chatHomeClickHandler = () => {
-		history.push('/');
+    history.push('/'); 
+		console.log('Going home')
 	};
 
 	const signOutClickHandler = () => {

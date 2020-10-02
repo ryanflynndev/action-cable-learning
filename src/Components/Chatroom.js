@@ -91,11 +91,12 @@ const chatroomStyles = {
   // border: '1px solid blue',
   float: 'right',
   borderRadius: '8px',
-  marginRight: '20vw',
+  marginLeft: '10vw',
 }
 
 const messageCont = {
   overflowY: 'scroll',
   height: '50vh',
   maxWidth: '60vw',
+	background: '#454545',
 }

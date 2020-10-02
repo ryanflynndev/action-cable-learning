@@ -23,14 +23,14 @@ class MessageContainer extends React.Component {
 
 	render() {
 		return (
-			<>
-				{this.renderMessages()}
+            <>
+            {this.renderMessages()}
 				<div
 					style={{ float: 'left', clear: 'both' }}
 					ref={(el) => {
-						this.messagesEnd = el;
+                        this.messagesEnd = el;
 					}}
-				></div>
+                    ></div>
 			</>
 		);
 	}
